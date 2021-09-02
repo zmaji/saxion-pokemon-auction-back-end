@@ -1,0 +1,8 @@
+### Get the information of the current user
+GET http://localhost:3000/account
+
+### Get all the bids of the current user
+GET http://localhost:3000/account/bids
+
+### Get all the bids of the current user
+GET http://localhost:3000/account/bids?won=true

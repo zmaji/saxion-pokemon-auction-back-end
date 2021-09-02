@@ -1,0 +1,17 @@
+### Get the all registered accounts
+GET http://localhost:3000/admin/accounts
+
+### Get all accounts that have "Bill" in their first name
+GET http://localhost:3000/admin/accounts?firstName=Bill
+
+### Get all accounts that have "Mais" in their last name
+GET http://localhost:3000/admin/accounts?lastName=Mais
+
+### Get all accounts that have the email "BillyMais@gmail.com"
+GET http://localhost:3000/admin/accounts?email=BillyMais@gmail.com
+
+### Get the account with ID 1
+GET http://localhost:3000/admin/accounts/1
+
+### Get the account with ID 1 and look at all the account's bids
+GET http://localhost:3000/admin/accounts/1/bids

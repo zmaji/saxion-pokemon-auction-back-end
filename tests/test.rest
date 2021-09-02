@@ -14,3 +14,6 @@ GET http://localhost:3000/
   });
 
  %}
+### rando
+GET http://localhost:3000/tokenContent-Type: application/json
+> {%client.global.set("token", response.body.json.token);%}
