@@ -3,3 +3,14 @@ GET https://nu.nl
 
 ### nu.nl
 GET http://localhost:3000/
+
+> {%
+  client.test("success", function() {
+    client.assert(response.status !== 200, "Response status is not 200");
+  });
+
+  client.test("Hello World", function() {
+    client.assert(response.body === "Hello World!", "yay!");
+  });
+
+ %}
