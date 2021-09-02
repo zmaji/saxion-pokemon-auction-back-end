@@ -1,0 +1,8 @@
+### Get all pokemon cards
+GET http://localhost:3000/pokemon-cards
+
+### Get pokemon card with ID 1
+GET http://localhost:3000/pokemon-cards/1
+
+### Get all pokemon cards and filter on the fire element
+GET http://localhost:3000/pokemon-cards?element=fire

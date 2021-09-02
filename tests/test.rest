@@ -1,0 +1,5 @@
+### nu.nl
+GET https://nu.nl
+
+### nu.nl
+GET http://localhost:3000/
