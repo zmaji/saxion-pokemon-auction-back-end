@@ -1,6 +1,15 @@
 ### Get all Pokémon cards
 GET http://localhost:3000/pokemon-cards
 
+### Get Pokémon card with ID 1
+GET http://localhost:3000/pokemon-cards/1
+
+### Get all pokemon cards that have "Charizard" in the name
+GET http://localhost:3000/pokemon-cards?name=Charizard
+
+### Get all pokemon cards that have a starting amount of 15
+GET http://localhost:3000/pokemon-cards?starting-amount=15
+
 ### Get all pokemon cards and filter on the rarity
 GET http://localhost:3000/pokemon-cards?rarity=rare
 
@@ -31,11 +40,5 @@ GET http://localhost:3000/pokemon-cards?type=trainer
 ### Get all pokemon cards and filter on type for all energy cards
 GET http://localhost:3000/pokemon-cards?type=energy
 
-### Get all pokemon cards that have "Charezard" in the name
-GET http://localhost:3000/pokemon-cards?name=Charezard
 
-### Get all pokemon cards that have a price of 15
-GET http://localhost:3000/pokemon-cards?price=15
 
-### Get Pokémon card with ID 1
-GET http://localhost:3000/pokemon-cards/1
