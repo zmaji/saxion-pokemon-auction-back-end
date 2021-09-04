@@ -73,6 +73,20 @@ GET http://localhost:3000/pokemon-cards?resistance=grass
 ### Get all Pokémon cards and filter on resistance to electric elements
 GET http://localhost:3000/pokemon-cards?resistance=electric
 
+#------------------------------------------------------------------------
+
+### Adds a Pokémon card (auction)
+POST http://localhost:3000/pokemon-cards
+
+#------------------------------------------------------------------------
+
+### Modifies a Pokémon card (auction) with card id 1
+PUT http://localhost:3000/pokemon-cards/1
+
+#------------------------------------------------------------------------
+
+### Deletes a Pokémon card (auction) with card id 1
+DELETE http://localhost:3000/pokemon-cards/1
 
 
 
