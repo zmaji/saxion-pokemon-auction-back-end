@@ -1,20 +1,29 @@
-### Get all pokemon cards
+### Get all Pokémon cards
 GET http://localhost:3000/pokemon-cards
 
 ### Get all pokemon cards and filter on the rarity
 GET http://localhost:3000/pokemon-cards?rarity=rare
 
-### Get all pokemon cards and filter on the fire element
+### Get all Pokémon cards and filter on normal element
+GET http://localhost:3000/pokemon-cards?element=normal
+
+### Get all Pokémon cards and filter on fire element
 GET http://localhost:3000/pokemon-cards?element=fire
+
+### Get all Pokémon cards and filter on water element
+GET http://localhost:3000/pokemon-cards?element=water
+
+### Get all Pokémon cards and filter on grass element
+GET http://localhost:3000/pokemon-cards?grass=grass
+
+### Get all Pokémon cards and filter on electric element
+GET http://localhost:3000/pokemon-cards?electric=electric
 
 ### Get all pokemon cards and filter on the type of weakness to the earth element
 GET http://localhost:3000/pokemon-cards?weakness=earth
 
 ### Get all pokemon cards and filter on the type of resistance to the water element
 GET http://localhost:3000/pokemon-cards?resistance=water
-
-### Get all pokemon cards and filter on the fire element
-GET http://localhost:3000/pokemon-cards?element=fire
 
 ### Get all pokemon cards and filter on type for all trainer cards
 GET http://localhost:3000/pokemon-cards?type=trainer
@@ -28,5 +37,5 @@ GET http://localhost:3000/pokemon-cards?name=Charezard
 ### Get all pokemon cards that have a price of 15
 GET http://localhost:3000/pokemon-cards?price=15
 
-### Get pokemon card with ID 1
+### Get Pokémon card with ID 1
 GET http://localhost:3000/pokemon-cards/1
