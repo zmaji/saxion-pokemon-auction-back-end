@@ -4,13 +4,28 @@ GET http://localhost:3000/pokemon-cards
 ### Get Pokémon card with ID 1
 GET http://localhost:3000/pokemon-cards/1
 
-### Get all pokemon cards that have "Charizard" in the name
+### Get all Pokémon cards that have "Charizard" in the name
 GET http://localhost:3000/pokemon-cards?name=Charizard
 
-### Get all pokemon cards that have a starting amount of 15
+### Get all Pokémon cards that have a starting amount of 15
 GET http://localhost:3000/pokemon-cards?starting-amount=15
 
-### Get all pokemon cards and filter on the rarity
+### Get all Pokémon cards and filter on type for all Pokémon cards
+GET http://localhost:3000/pokemon-cards?type=pokemon
+
+### Get all Pokémon cards and filter on type for all energy cards
+GET http://localhost:3000/pokemon-cards?type=energy
+
+### Get all Pokémon cards and filter on type for all trainer cards
+GET http://localhost:3000/pokemon-cards?type=trainer
+
+### Get all Pokémon cards and filter on the common rarity
+GET http://localhost:3000/pokemon-cards?rarity=common
+
+### Get all Pokémon cards and filter on the uncommon rarity
+GET http://localhost:3000/pokemon-cards?rarity=uncommon
+
+### Get all Pokémon cards and filter on the rare rarity
 GET http://localhost:3000/pokemon-cards?rarity=rare
 
 ### Get all Pokémon cards and filter on normal element
@@ -28,17 +43,36 @@ GET http://localhost:3000/pokemon-cards?grass=grass
 ### Get all Pokémon cards and filter on electric element
 GET http://localhost:3000/pokemon-cards?electric=electric
 
-### Get all pokemon cards and filter on the type of weakness to the earth element
-GET http://localhost:3000/pokemon-cards?weakness=earth
+### Get all Pokémon cards and filter on weakness to normal elements
+GET http://localhost:3000/pokemon-cards?weakness=normal
 
-### Get all pokemon cards and filter on the type of resistance to the water element
+### Get all Pokémon cards and filter on weakness to fire elements
+GET http://localhost:3000/pokemon-cards?weakness=fire
+
+### Get all Pokémon cards and filter on weakness to water elements
+GET http://localhost:3000/pokemon-cards?weakness=water
+
+### Get all Pokémon cards and filter on weakness to grass elements
+GET http://localhost:3000/pokemon-cards?weakness=grass
+
+### Get all Pokémon cards and filter on weakness to electric elements
+GET http://localhost:3000/pokemon-cards?weakness=electric
+
+### Get all Pokémon cards and filter on resistance to normal elements
+GET http://localhost:3000/pokemon-cards?resistance=normal
+
+### Get all Pokémon cards and filter on resistance to fire elements
+GET http://localhost:3000/pokemon-cards?resistance=fire
+
+### Get all Pokémon cards and filter on resistance to water elements
 GET http://localhost:3000/pokemon-cards?resistance=water
 
-### Get all pokemon cards and filter on type for all trainer cards
-GET http://localhost:3000/pokemon-cards?type=trainer
+### Get all Pokémon cards and filter on resistance to grass elements
+GET http://localhost:3000/pokemon-cards?resistance=grass
 
-### Get all pokemon cards and filter on type for all energy cards
-GET http://localhost:3000/pokemon-cards?type=energy
+### Get all Pokémon cards and filter on resistance to electric elements
+GET http://localhost:3000/pokemon-cards?resistance=electric
+
 
 
 
