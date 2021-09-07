@@ -2,14 +2,15 @@
   "name": "webtech",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "echo \"Starting app.js\" && node app.js"
+    "start": "echo \"Starting index.js\" && node src/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "http-status-codes": "^2.1.4"
   }
 }
