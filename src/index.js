@@ -1,6 +1,7 @@
 const express = require('express');
 const port = 3000;
-let data = require('./data/cards');
+let cardData = require('./data/pokemonCards');
+let userData = require('./data/users');
 
 const app = express();
 const bodyParser = require("body-parser");
@@ -8,11 +9,11 @@ const bodyParser = require("body-parser");
 app.use(express.json());
 app.use(bodyParser.json());
 
-app.use('/cards', require('./routes/cards'));
+app.use('/pokemon-cards', require('./routes/pokemonCards'));
 
 app.get('', (req, res) => {
     // res.send('Return a list of cards');
-    res.send(data);
+    res.send(userData);
 });
 app.listen(port, () => {
     console.log(`Server runnning on port ${port}`);

@@ -4,8 +4,8 @@ const { StatusCodes} = require('http-status-codes');
 const router = express.Router();
 
 router.get('', (req, res) => {
-    // res.send('Return a list of cards');
-    res.render('test')
+    res.send('Return a list of cards');
+    // res.render('test')
 });
 
 router.get('/:cardID', (req, res) => {
@@ -18,13 +18,13 @@ router.post('', (req, res) => {
        .send('Create a card here');
 });
 
-router.put('', (req, res) => {
+router.put('/:cardID', (req, res) => {
     res
         .status(StatusCodes.OK)
         .send('Update a card here');
 });
 
-router.delete('', (req, res) => {
+router.delete('/:cardID', (req, res) => {
     res
         .status(StatusCodes.NO_CONTENT)
         .send('Create a card here');
