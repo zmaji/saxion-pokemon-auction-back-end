@@ -9,7 +9,7 @@ router.get('', (req, res) => {
 });
 
 router.get('/:cardID', (req, res) => {
-    res.send('Return a one card');
+    res.send('Return one card');
 });
 
 router.post('', (req, res) => {

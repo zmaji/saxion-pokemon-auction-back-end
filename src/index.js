@@ -1,6 +1,6 @@
 const express = require('express');
 const port = 3000;
-let cardData = require('./data/pokemonCards');
+let cardData = require('./data/pokemonCardsData');
 let userData = require('./data/users');
 
 const app = express();

@@ -4,6 +4,17 @@ GET http://localhost:3000/pokemon-cards
 ### Get Pokémon card with ID 1
 GET http://localhost:3000/pokemon-cards/1
 
+> {%
+  client.test("success", function() {
+    client.assert(response.status !== 200, "Response status is not 200");
+  });
+
+  client.test("CheckCardID", function() {
+    client.assert(response.body === "Return one card", "yay!");
+  });
+
+ %}
+
 ### Get all Pokémon cards that have "Charizard" in the name
 GET http://localhost:3000/pokemon-cards?name=Charizard
 

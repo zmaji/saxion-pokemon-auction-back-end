@@ -20,5 +20,5 @@ GET http://localhost:3000/tokenContent-Type: application/json
 > {%client.global.set("token", response.body.json.token);%}
 
 ### test
-#GET http://{{host}}:{{port}}
+GET http://{{host}}:{{port}}
 # Set variables
