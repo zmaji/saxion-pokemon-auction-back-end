@@ -9,14 +9,20 @@ const bodyParser = require("body-parser");
 app.use(express.json());
 app.use(bodyParser.json());
 
-app.use('/pokemon-cards', require('./routes/pokemonCards'));
-
-app.use('/admin', require('./routes/admin'));
-
 app.get('', (req, res) => {
     // res.send('Return a list of cards');
     res.send(userData);
 });
+
+// Pokemon card base route
+app.use('/pokemon-cards', require('./routes/pokemonCards'));
+
+// Account base route
+// app.use('/account', require('./routes/account'));
+
+// Admin base route
+app.use('/admin', require('./routes/admin'));
+
 app.listen(port, () => {
     console.log(`Server runnning on port ${port}`);
 });

@@ -21,7 +21,7 @@ GET {{baseUrl}}/pokemon-cards/1
   });
 
   client.test("GetPokemonCardByID", function() {
-    client.assert(response.body[0].userID === 1, "User with id 1 has been found!");
+    client.assert(response.body[0].cardID === 1, "User with id 1 has been found!");
   });
 
  %}
