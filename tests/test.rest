@@ -2,7 +2,7 @@
 GET https://nu.nl
 
 ### nu.nl
-GET http://localhost:3000/
+GET {{baseUrl}}
 
 > {%
   client.test("success", function() {
@@ -16,7 +16,7 @@ GET http://localhost:3000/
  %}
 
 ### rando
-GET http://localhost:3000/tokenContent-Type: application/json
+GET {{baseUrl}}tokenContent-Type: application/json
 > {%client.global.set("token", response.body.json.token);%}
 
 ### test

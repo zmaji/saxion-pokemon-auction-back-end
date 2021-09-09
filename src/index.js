@@ -1,7 +1,7 @@
 const express = require('express');
 const port = 3000;
 let cardData = require('./data/pokemonCardsData');
-let userData = require('./data/users');
+let userData = require('./data/usersData');
 
 const app = express();
 const bodyParser = require("body-parser");

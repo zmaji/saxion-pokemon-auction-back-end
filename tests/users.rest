@@ -1,9 +1,9 @@
 ### Get the information of the current user
-GET http://localhost:3000/account
+GET {{baseUrl}}/account
 
 ### Get all the bids of the current user
-GET http://localhost:3000/account/bids
+GET {{baseUrl}}/account/bids
 
 ### Get all the bids of the current user
-GET http://localhost:3000/account/bids?won=true
+GET {{baseUrl}}/account/bids?won=true
 

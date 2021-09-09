@@ -24,12 +24,12 @@ module.exports = [
     {
         userID: 3,
         roleID: 1,
-        firstName: 'Ash',
-        lastName: 'Ketchum',
-        email: 'ashKetchum@pokemon.com',
-        password: 'GottaCatchEmAll',
+        firstName: 'Misty',
+        lastName: 'Kasumi',
+        email: 'mistyKasumi@pokemon.com',
+        password: 'iLikeWater',
         city: 'Cerulian City',
-        address: 'OakRoad 12',
+        address: 'pond 33',
         zipCode: '9540 CT'
     }
 ]

@@ -1,8 +1,8 @@
 ### Get all Pokémon cards
-GET http://localhost:3000/pokemon-cards
+GET {{baseUrl}}/pokemon-cards
 
 ### Get Pokémon card with ID 1
-GET http://localhost:3000/pokemon-cards/1
+GET {{baseUrl}}/pokemon-cards/1
 
 > {%
   client.test("success", function() {
@@ -16,88 +16,88 @@ GET http://localhost:3000/pokemon-cards/1
  %}
 
 ### Get all Pokémon cards that have "Charizard" in the name
-GET http://localhost:3000/pokemon-cards?name=Charizard
+GET {{baseUrl}}/pokemon-cards?name=Charizard
 
 ### Get all Pokémon cards that have a starting amount of 15
-GET http://localhost:3000/pokemon-cards?starting-amount=15
+GET {{baseUrl}}/pokemon-cards?starting-amount=15
 
 ### Get all Pokémon cards and filter on type for all Pokémon cards
-GET http://localhost:3000/pokemon-cards?type=pokemon
+GET {{baseUrl}}/pokemon-cards?type=pokemon
 
 ### Get all Pokémon cards and filter on type for all energy cards
-GET http://localhost:3000/pokemon-cards?type=energy
+GET {{baseUrl}}/pokemon-cards?type=energy
 
 ### Get all Pokémon cards and filter on type for all trainer cards
-GET http://localhost:3000/pokemon-cards?type=trainer
+GET {{baseUrl}}/pokemon-cards?type=trainer
 
 ### Get all Pokémon cards and filter on the common rarity
-GET http://localhost:3000/pokemon-cards?rarity=common
+GET {{baseUrl}}/pokemon-cards?rarity=common
 
 ### Get all Pokémon cards and filter on the uncommon rarity
-GET http://localhost:3000/pokemon-cards?rarity=uncommon
+GET {{baseUrl}}/pokemon-cards?rarity=uncommon
 
 ### Get all Pokémon cards and filter on the rare rarity
-GET http://localhost:3000/pokemon-cards?rarity=rare
+GET {{baseUrl}}/pokemon-cards?rarity=rare
 
 ### Get all Pokémon cards and filter on normal element
-GET http://localhost:3000/pokemon-cards?element=normal
+GET {{baseUrl}}/pokemon-cards?element=normal
 
 ### Get all Pokémon cards and filter on fire element
-GET http://localhost:3000/pokemon-cards?element=fire
+GET {{baseUrl}}/pokemon-cards?element=fire
 
 ### Get all Pokémon cards and filter on water element
-GET http://localhost:3000/pokemon-cards?element=water
+GET {{baseUrl}}/pokemon-cards?element=water
 
 ### Get all Pokémon cards and filter on grass element
-GET http://localhost:3000/pokemon-cards?grass=grass
+GET {{baseUrl}}/pokemon-cards?grass=grass
 
 ### Get all Pokémon cards and filter on electric element
-GET http://localhost:3000/pokemon-cards?electric=electric
+GET {{baseUrl}}/pokemon-cards?electric=electric
 
 ### Get all Pokémon cards and filter on weakness to normal elements
-GET http://localhost:3000/pokemon-cards?weakness=normal
+GET {{baseUrl}}/pokemon-cards?weakness=normal
 
 ### Get all Pokémon cards and filter on weakness to fire elements
-GET http://localhost:3000/pokemon-cards?weakness=fire
+GET {{baseUrl}}/pokemon-cards?weakness=fire
 
 ### Get all Pokémon cards and filter on weakness to water elements
-GET http://localhost:3000/pokemon-cards?weakness=water
+GET {{baseUrl}}/pokemon-cards?weakness=water
 
 ### Get all Pokémon cards and filter on weakness to grass elements
-GET http://localhost:3000/pokemon-cards?weakness=grass
+GET {{baseUrl}}/pokemon-cards?weakness=grass
 
 ### Get all Pokémon cards and filter on weakness to electric elements
-GET http://localhost:3000/pokemon-cards?weakness=electric
+GET {{baseUrl}}/pokemon-cards?weakness=electric
 
 ### Get all Pokémon cards and filter on resistance to normal elements
-GET http://localhost:3000/pokemon-cards?resistance=normal
+GET {{baseUrl}}/pokemon-cards?resistance=normal
 
 ### Get all Pokémon cards and filter on resistance to fire elements
-GET http://localhost:3000/pokemon-cards?resistance=fire
+GET {{baseUrl}}/pokemon-cards?resistance=fire
 
 ### Get all Pokémon cards and filter on resistance to water elements
-GET http://localhost:3000/pokemon-cards?resistance=water
+GET {{baseUrl}}/pokemon-cards?resistance=water
 
 ### Get all Pokémon cards and filter on resistance to grass elements
-GET http://localhost:3000/pokemon-cards?resistance=grass
+GET {{baseUrl}}/pokemon-cards?resistance=grass
 
 ### Get all Pokémon cards and filter on resistance to electric elements
-GET http://localhost:3000/pokemon-cards?resistance=electric
+GET {{baseUrl}}/pokemon-cards?resistance=electric
 
 #------------------------------------------------------------------------
 
 ### Adds a Pokémon card (auction)
-POST http://localhost:3000/pokemon-cards
+POST {{baseUrl}}/pokemon-cards
 
 #------------------------------------------------------------------------
 
 ### Modifies a Pokémon card (auction) with card id 1
-PUT http://localhost:3000/pokemon-cards/1
+PUT {{baseUrl}}/pokemon-cards/1
 
 #------------------------------------------------------------------------
 
 ### Deletes a Pokémon card (auction) with card id 1
-DELETE http://localhost:3000/pokemon-cards/1
+DELETE {{baseUrl}}/pokemon-cards/1
 
 
 
