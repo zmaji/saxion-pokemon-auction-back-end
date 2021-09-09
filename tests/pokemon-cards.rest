@@ -358,7 +358,7 @@ POST {{baseUrl}}/pokemon-cards
     client.assert(response.status !== 201, "Response status is not 201");
   });
 
-  client.test("PostPokemonCard", function() {
+  client.test("AddPokemonCard", function() {
     client.assert(response.body === "Return posted Pokemon Card", "Test succeeded!");
   });
 
