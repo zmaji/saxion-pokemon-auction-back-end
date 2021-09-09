@@ -1,0 +1,41 @@
+### Get all bids
+GET {{baseUrl}}/bids
+
+> {%
+  client.test("success", function() {
+    client.assert(response.status !== 200, "Response status is not 200");
+  });
+
+  client.test("GetAllBids", function() {
+    client.assert(response.body === "Return a list of all bids", "Test succeeded!");
+  });
+
+ %}
+
+###------------------------------------------------------------------------
+
+### Adds a new bid
+POST {{baseUrl}}/bids
+
+> {%
+  client.test("success", function() {
+    client.assert(response.status !== 201, "Response status is not 200");
+  });
+
+  client.test("AddBid", function() {
+    client.assert(response.body === "Return posted bid", "Test succeeded!");
+  });
+
+ %}
+
+###------------------------------------------------------------------------
+
+### Adds a new bid
+DELETE {{baseUrl}}/bids/1
+
+> {%
+  client.test("success", function() {
+    client.assert(response.status !== 200, "Response status is not 200");
+  });
+
+ %}
