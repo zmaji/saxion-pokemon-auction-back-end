@@ -10,7 +10,7 @@ GET {{baseUrl}}
   });
 
   client.test("Hello World", function() {
-    client.assert(response.body === "Hello World!", "yay!");
+    client.assert(response.body[0].userID === 1, "yay!");
   });
 
  %}

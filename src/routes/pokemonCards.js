@@ -4,12 +4,16 @@ const { StatusCodes} = require('http-status-codes');
 const router = express.Router();
 
 router.get('', (req, res) => {
-    res.send('Return a list of cards');
+    res
+        .status(StatusCodes.OK)
+        .send('Return a list of cards');
     // res.render('test')
 });
 
 router.get('/:cardID', (req, res) => {
-    res.send('Return one card');
+    res
+        .status(StatusCodes.OK) // Add check if an object has been found or not
+        .send('Return one card');
 });
 
 router.post('', (req, res) => {

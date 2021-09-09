@@ -21,13 +21,13 @@ GET {{baseUrl}}/pokemon-cards/1
   });
 
   client.test("GetPokemonCardByID", function() {
-    client.assert(response.body === "Return one card", "Test succeeded!");
+    client.assert(response.body[0].userID === 1, "User with id 1 has been found!");
   });
 
  %}
 
 ### Get all Pokémon cards that have "Charizard" in the name
-GET {{baseUrl}}/pokemon-cards?name=Charizard
+GET {{baseUrl}}/pokemon-cards?name=Pikachu
 
 > {%
   client.test("success", function() {
@@ -35,7 +35,7 @@ GET {{baseUrl}}/pokemon-cards?name=Charizard
   });
 
   client.test("GetPokemonCardsByName", function() {
-    client.assert(response.body === "Return Charizard", "Test succeeded!");
+    client.assert(response.body[0].name === "Pikachu", "Pokemon found named Pikachu");
   });
 
  %}
@@ -49,7 +49,7 @@ GET {{baseUrl}}/pokemon-cards?starting-amount=15
   });
 
   client.test("GetPokemonsByStartingAmount", function() {
-    client.assert(response.body === "Return one card by starting amount", "Test succeeded!");
+    client.assert(response.body[0].startingAmount === 15, "A card with startingAmount 15 has been found");
   });
 
  %}
