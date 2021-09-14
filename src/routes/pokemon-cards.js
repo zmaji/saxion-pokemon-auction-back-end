@@ -11,8 +11,13 @@ router.get('', (req, res) => {
     let { name, rarity } = req.query;
     let result = cards;
 
-    result = result.filter(card => card.name === name);
-    result = result.filter(card => card.rarity === rarity);
+    if (name) {
+        result = result.filter(card => card.name === name);
+    }
+
+    if (rarity) {
+        result = result.filter(card => card.rarity === rarity);
+    }
 
     res
         .status(StatusCodes.OK)
