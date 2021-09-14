@@ -8,15 +8,36 @@ const isLoggedIn = require('../middleware/is-logged-in')
 const users = require("../data/users-data");
 
 router.get('', (req, res) => {
-    let { name, rarity } = req.query;
+    let { name, startingAmount, availabilityDate, cardType, rarity, element, weakness, resistance, bids } = req.query;
     let result = cards;
 
     if (name) {
         result = result.filter(card => card.name === name);
     }
 
+    if (startingAmount) {
+        result = result.filter(card => card.startingAmount === startingAmount);
+    }
+    if (availabilityDate) {
+        result = result.filter(card => card.availabilityDate === availabilityDate);
+    }
+    if (cardType) {
+        result = result.filter(card => card.cardType === cardType);
+    }
     if (rarity) {
         result = result.filter(card => card.rarity === rarity);
+    }
+    if (element) {
+        result = result.filter(card => card.element === element);
+    }
+    if (weakness) {
+        result = result.filter(card => card.weakness === weakness);
+    }
+    if (resistance) {
+        result = result.filter(card => card.resistance === resistance);
+    }
+    if (bids) {
+        result = result.filter(card => card.bids === bids);
     }
 
     res
