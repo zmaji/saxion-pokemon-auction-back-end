@@ -3,11 +3,11 @@ GET {{baseUrl}}/pokemon-cards
 
 > {%
   client.test("success", function() {
-    client.assert(response.status !== 200, "Response status is not 200");
+    client.assert(response.status === 200, "Response status is not 200");
   });
 
   client.test("GetAllPokemonCards", function() {
-    client.assert(response.body === "Return a list of all cards", "Test succeeded!");
+    client.assert(response.body.length > 0, "There have been no cards retrieved!");
   });
 
  %}
@@ -17,11 +17,11 @@ GET {{baseUrl}}/pokemon-cards/1
 
 > {%
   client.test("success", function() {
-    client.assert(response.status !== 200, "Response status is not 200");
+    client.assert(response.status === 200, "Response status is not 200");
   });
 
   client.test("GetPokemonCardByID", function() {
-    client.assert(response.body[0].cardID === 1, "User with id 1 has been found!");
+    client.assert(response.body.cardID === 1, "Card with id 1 has been found!");
   });
 
  %}
@@ -31,7 +31,7 @@ GET {{baseUrl}}/pokemon-cards?name=Pikachu
 
 > {%
   client.test("success", function() {
-    client.assert(response.status !== 200, "Response status is not 200");
+    client.assert(response.status === 200, "Response status is not 200");
   });
 
   client.test("GetPokemonCardsByName", function() {
@@ -45,7 +45,7 @@ GET {{baseUrl}}/pokemon-cards?starting-amount=15
 
 > {%
   client.test("success", function() {
-    client.assert(response.status !== 200, "Response status is not 200");
+    client.assert(response.status === 200, "Response status is not 200");
   });
 
   client.test("GetPokemonsByStartingAmount", function() {
