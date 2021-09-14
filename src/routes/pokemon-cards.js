@@ -8,20 +8,15 @@ const isLoggedIn = require('../middleware/is-logged-in')
 const users = require("../data/users-data");
 
 router.get('', (req, res) => {
-    console.log(req.query);
-    for (let queryKey in req.query) {
-        console.log(queryKey)
-    }
-    // req.query
+    let { name, rarity } = req.query;
     let result = cards;
 
-
+    result = result.filter(card => card.name === name);
+    result = result.filter(card => card.rarity === rarity);
 
     res
         .status(StatusCodes.OK)
-        .send(cards);
-    // res.json(req.query)
-
+        .send(result);
 });
 
 router.get('/:cardID', (req, res) => {
@@ -60,35 +55,38 @@ router.post('', (req, res) => {
 });
 
 router.put('/:cardID', (req, res) => {
-    let result = cards.find((card) => {
-        return card.cardID === parseInt(req.params.cardID);
-    });
-
+    let index = cards.findIndex((card => card.cardID === parseInt(req.params.cardID)));
     let {userID, name, startingAmount, imageURL, availabilityDate, cardType, rarity, element, weakness, resistance } = req.body;
 
-    result = {
-        cardID: req.params.cardID,
-        userID: parseInt(userID),
-        name: name,
-        startingAmount: parseInt(startingAmount),
-        imageURL: imageURL,
-        availabilityDate: availabilityDate,
-        cardType: cardType,
-        rarity: rarity,
-        element: element,
-        weakness: weakness,
-        resistance: resistance,
-    };
+    if (index) {
+        cards[index].cardID = parseInt(req.params.cardID);
+        cards[index].userID = parseInt(userID);
+        cards[index].name = name;
+        cards[index].startingAmount = parseInt(startingAmount);
+        cards[index].imageURL = imageURL;
+        cards[index].availabilityDate = availabilityDate;
+        cards[index].cardType = cardType;
+        cards[index].rarity = rarity;
+        cards[index].element = element;
+        cards[index].weakness = weakness;
+        cards[index].resistance = resistance;
+        cards[index].bids = [];
+    }
 
     res
         .status(StatusCodes.OK)
-        .send(result);
+        .send(cards[index]);
 });
 
 router.delete('/:cardID', (req, res) => {
+    let index = cards.findIndex((card => card.cardID === parseInt(req.params.cardID)));
+    if (index) {
+        cards.splice(index, 1);
+    }
+
     res
         .status(StatusCodes.NO_CONTENT)
-        .send('Create a card here');
+        .send(StatusCodes.NO_CONTENT);
 });
 
 module.exports = router;
