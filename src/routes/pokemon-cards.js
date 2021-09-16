@@ -28,9 +28,16 @@ router.get('/:cardID', (req, res) => {
         return card.cardID === parseInt(req.params.cardID);
     });
 
-    res
-        .status(StatusCodes.OK) // Add check if an object has been found or not
-        .send(result);
+    if (result) {
+        res
+            .status(StatusCodes.OK) // Add check if an object has been found or not
+            .send(result);
+    } else {
+        res
+            .status(StatusCodes.NOT_FOUND)
+            .send(StatusCodes.NOT_FOUND);
+    }
+
 });
 
 router.post('/:cardID', (req, res) => {

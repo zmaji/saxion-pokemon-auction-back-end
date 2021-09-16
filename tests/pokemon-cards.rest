@@ -352,45 +352,84 @@ GET {{baseUrl}}/pokemon-cards?resistance=electric
 
 ### Adds a Pokémon card (auction)
 POST {{baseUrl}}/pokemon-cards
+Content-Type: application/json
+
+{
+  "userID": 1,
+  "name": "Psyduck",
+  "startingAmount": 65,
+  "imageURL": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/054.png",
+  "availabilityDate": "10-9-2021",
+  "cardType": "Pokemon",
+  "rarity": "Normal",
+  "element": "Water",
+  "weakness": "Electric",
+  "resistance": "Fire"
+}
 
 > {%
   client.test("success", function() {
-    client.assert(response.status !== 201, "Response status is not 201");
+    client.assert(response.status === 201, "Response status is not 201");
   });
 
   client.test("AddPokemonCard", function() {
-    client.assert(response.body === "Return posted Pokemon Card", "Test succeeded!");
+    client.assert(response.body.name === "Psyduck", "Test succeeded!");
   });
 
  %}
 
 ###------------------------------------------------------------------------
 
-### Modifies a Pokémon card (auction) with card id 1
-PUT {{baseUrl}}/pokemon-cards/1
+### Modifies a Pokémon card (auction) with card id 5
+PUT {{baseUrl}}/pokemon-cards/5
+Content-Type: application/json
+
+{
+  "cardID": 5,
+  "userID": 1,
+  "name": "Psyduck",
+  "startingAmount": 85,
+  "imageURL": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/054.png",
+  "availabilityDate": "10-9-2021",
+  "cardType": "Pokemon",
+  "rarity": "Normal",
+  "element": "Water",
+  "weakness": "Electric",
+  "resistance": "Fire",
+  "bids" : []
+}
 
 > {%
   client.test("success", function() {
-    client.assert(response.status !== 200, "Response status is not 200");
+    client.assert(response.status === 200, "Response status is not 200");
   });
 
-  client.test("PutPokemonCardByID", function() {
-    client.assert(response.body === "Return adjusted Pokemon Card", "Test succeeded!");
+  client.test("AddPokemonCard", function() {
+    client.assert(response.body.startingAmount === 85, "Test succeeded!");
   });
 
  %}
 
 ###------------------------------------------------------------------------
 
-### Deletes a Pokémon card (auction) with card id 1
-DELETE {{baseUrl}}/pokemon-cards/1
+### Deletes a Pokémon card (auction) with card id 5
+DELETE {{baseUrl}}/pokemon-cards/5
 
 > {%
   client.test("success", function() {
-    client.assert(response.status !== 200, "Response status is not 200");
+    client.assert(response.status === 204, "Response status is not 204");
   });
 
  %}
 
+### Check if deleted card with ID 5 is actually deleted
+GET {{baseUrl}}/pokemon-cards/5
+
+> {%
+  client.test("success", function() {
+    client.assert(response.status === 404, "Response status is not 404");
+  });
+
+ %}
 
 

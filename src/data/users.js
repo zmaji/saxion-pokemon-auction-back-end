@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 module.exports = [
     {
         userID: 1,
-        roleID: 1,
+        roleID: 2,
         firstName: 'Ash',
         lastName: 'Ketchum',
         email: 'ashKetchum@pokemon.com',

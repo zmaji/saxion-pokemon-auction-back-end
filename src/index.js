@@ -30,10 +30,9 @@ app.use('/pokemon-cards', require('./routes/pokemon-cards'));
 app.use('/:cardID', require('./routes/bids'));
 
 // Account base route
-// app.use('/account', require('./routes/account'));
+app.use('/account', require('./routes/account'));
 
 // Admin base route
-app.use('/admin', require('./routes/admin'));
 
 app.listen(port, () => {
     console.log(`Server runnning on port ${port}`);
