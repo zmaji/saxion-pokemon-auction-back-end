@@ -1,5 +1,5 @@
 const { StatusCodes} = require('http-status-codes');
-const users = require('../data/users-data');
+const users = require('../data/users');
 const bcrypt = require('bcrypt');
 
 const isLoggedIn = (req, res, next) => {
@@ -15,14 +15,11 @@ const isLoggedIn = (req, res, next) => {
 
         if (user) {
             const result = bcrypt.compareSync(password, user.password);
-
             if (result) {
+                req.user = user;
                 next();
             }
         }
-    } else {
-        // res.statusCode(StatusCodes.UNAUTHORIZED).send('You need to send your credentials');
-        next();
     }
 };
 

@@ -1,23 +1,21 @@
 const express = require('express');
 const { StatusCodes} = require('http-status-codes');
-let cards = require('../data/pokemon-cards-data');
+let cards = require('../data/pokemon-cards');
 
 const router = express.Router();
 const {forwardAuthenticated, forwardUnAuthenticated} = require('../middleware/auth');
-const isLoggedIn = require('../middleware/is-logged-in')
-const users = require("../data/users-data");
+const isLoggedIn = require('../middleware/is-logged-in');
 
 router.get('', (req, res) => {
-    let { name, rarity } = req.query;
-    let result = cards;
+    let filters = req.query;
 
-    if (name) {
-        result = result.filter(card => card.name === name);
-    }
-
-    if (rarity) {
-        result = result.filter(card => card.rarity === rarity);
-    }
+    const result = cards.filter(card => {
+        let isValid = true;
+        for (let key in filters) {
+            isValid = isValid && card[key] === filters[key];
+        }
+        return isValid;
+    });
 
     res
         .status(StatusCodes.OK)

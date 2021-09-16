@@ -1,8 +1,8 @@
 const express = require('express');
 const port = 3000;
 const { StatusCodes} = require('http-status-codes');
-let cardData = require('./data/pokemon-cards-data');
-let userData = require('./data/users-data');
+let cards = require('./data/pokemon-cards');
+let users = require('./data/users');
 
 const app = express();
 const bodyParser = require("body-parser");
@@ -15,9 +15,14 @@ app.use(bodyParser.json());
 app.use(require('./middleware/log-time'));
 
 app.get('', (req, res) => {
+    for (let user of users) {
+        user.pokemon = cards.find((card) => {
+            return card.userID === user.userID;
+        })
+    }
     res
         .status(StatusCodes.OK)
-        .send(userData);
+        .send(users);
 });
 
 // Pokemon card base route
