@@ -1,6 +1,6 @@
 module.exports = {
     forwardAuthenticated: (req, res, next) => {
-        if (req.session.userID) {
+        if (req.userID) {
             res.redirect('/user/account');
         } else {
             next();
@@ -8,7 +8,7 @@ module.exports = {
     },
 
     forwardUnAuthenticated: (req, res, next) => {
-        if (!req.session.userID === undefined) {
+        if (!req.userID === undefined) {
             res.redirect('/user/login');
         } else {
             next();

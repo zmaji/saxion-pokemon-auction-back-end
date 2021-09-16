@@ -15,6 +15,12 @@ GET {{baseUrl}}
 
  %}
 
+### authentication
+GET {{baseUrl}}
+Content-Type: application/json
+authorization: Ash GottaCatchEmAll
+
+
 ### rando
 GET {{baseUrl}}tokenContent-Type: application/json
 > {%client.global.set("token", response.body.json.token);%}

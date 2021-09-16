@@ -1,13 +1,22 @@
 const express = require('express');
 const { StatusCodes} = require('http-status-codes');
+const isLoggedIn = require('../middleware/is-logged-in');
+
 
 const router = express.Router();
 
-router.get('', (req, res) => {
+router.get('', isLoggedIn, (req, res) => {
     res
         .status(StatusCodes.OK)
-        .send('Return user account page'); // Check if user is logged in or not
+        .send(req.user);
 });
+
+router.get('/bids', isLoggedIn, (req, res) => {
+    res
+        .status(StatusCodes.OK)
+        .send('Return all bids of the logged in user');
+});
+
 
 router.get('/register', (req, res) => {
     res
@@ -20,3 +29,5 @@ router.get('/login', (req, res) => {
         .status(StatusCodes.OK)
         .send('Return user login page page');
 });
+
+module.exports = router;

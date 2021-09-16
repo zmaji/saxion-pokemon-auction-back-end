@@ -10,12 +10,7 @@ module.exports = [
         rarity: 'Rare',
         element: 'Electric',
         weakness: 'Grass',
-        resistance: 'Electric',
-        bids: [
-            {
-            //    Bid object
-            }
-        ]
+        resistance: 'Electric'
     },
     {
         cardID: 2,
@@ -28,12 +23,7 @@ module.exports = [
         rarity: 'Rare',
         element: 'Water',
         weakness: 'Electric',
-        resistance: 'Fire',
-        bids: [
-            {
-            //    Bid object
-            }
-        ]
+        resistance: 'Fire'
     },
     {
         cardID: 3,
@@ -46,12 +36,7 @@ module.exports = [
         rarity: 'Rare',
         element: 'Fire',
         weakness: 'Water',
-        resistance: 'Grass',
-        bids: [
-            {
-            //    Bid object
-            }
-        ]
+        resistance: 'Grass'
     },
     {
         cardID: 4,
@@ -64,11 +49,6 @@ module.exports = [
         rarity: 'Rare',
         element: 'Grass',
         weakness: 'Fire',
-        resistance: 'Water',
-        bids: [
-            {
-            //    Bid object
-            }
-        ]
+        resistance: 'Water'
     }
 ]
