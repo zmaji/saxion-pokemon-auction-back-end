@@ -1,36 +1,42 @@
-### Get all bids
-GET {{baseUrl}}/bids
+### Post a bid on a certain Pokemon card
+POST {{baseUrl}}/pokemon-cards/1/bids
+Content-Type: application/json
+
+{
+  "userID": 1,
+  "bidPrice": 10
+}
 
 > {%
   client.test("success", function() {
-    client.assert(response.status !== 200, "Response status is not 200");
+    client.assert(response.status === 201, "Response status is not 201");
   });
 
-  client.test("GetAllBids", function() {
-    client.assert(response.body === "Return a list of all bids", "Test succeeded!");
+  client.test("PostBid", function() {
+    client.assert(response.body.bidPrice === 10, "There have been no bids retrieved!");
   });
 
  %}
 
 ###------------------------------------------------------------------------
 
-### Adds a new bid
-POST {{baseUrl}}/bids
+### Get all bids on a certain Pokemon card
+GET {{baseUrl}}/pokemon-cards/1/bids
 
 > {%
   client.test("success", function() {
-    client.assert(response.status !== 201, "Response status is not 200");
+    client.assert(response.status === 200, "Response status is not 200");
   });
 
-  client.test("AddBid", function() {
-    client.assert(response.body === "Return posted bid", "Test succeeded!");
+  client.test("GetAllBid", function() {
+    client.assert(response.body[0].cardID === 1 , "No bids found on this card");
   });
 
  %}
 
 ###------------------------------------------------------------------------
 
-### Adds a new bid
+### Deletes bid
 DELETE {{baseUrl}}/bids/1
 
 > {%

@@ -1,6 +1,7 @@
 const express = require('express');
 const { StatusCodes} = require('http-status-codes');
 let cards = require('../data/pokemon-cards');
+let bids = require('../data/bids');
 
 const router = express.Router();
 const {forwardAuthenticated, forwardUnAuthenticated} = require('../middleware/auth');
@@ -32,7 +33,7 @@ router.get('/:cardID', (req, res) => {
         .send(result);
 });
 
-router.post('', (req, res) => {
+router.post('/:cardID', (req, res) => {
     let {userID, name, startingAmount, imageURL, availabilityDate, cardType, rarity, element, weakness, resistance } = req.body;
 
     let pokemonCard = {
@@ -52,9 +53,9 @@ router.post('', (req, res) => {
 
     cards.push(pokemonCard);
 
-   res
-       .status(StatusCodes.CREATED)
-       .send(pokemonCard);
+    res
+        .status(StatusCodes.CREATED)
+        .send(pokemonCard);
 });
 
 router.put('/:cardID', (req, res) => {

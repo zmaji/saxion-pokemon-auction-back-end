@@ -27,6 +27,7 @@ app.get('', (req, res) => {
 
 // Pokemon card base route
 app.use('/pokemon-cards', require('./routes/pokemon-cards'));
+app.use('/:cardID', require('./routes/bids'));
 
 // Account base route
 // app.use('/account', require('./routes/account'));
