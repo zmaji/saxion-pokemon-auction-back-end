@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
   "userID": 1,
-  "bidPrice": 10
+  "bidPrice": 21
 }
 
 > {%
@@ -13,7 +13,7 @@ Content-Type: application/json
   });
 
   client.test("PostBid", function() {
-    client.assert(response.body.bidPrice === 10, "There have been no bids retrieved!");
+    client.assert(response.body.bidPrice === 21, "Bid price is too low");
   });
 
  %}
@@ -37,7 +37,7 @@ GET {{baseUrl}}/pokemon-cards/1/bids
 ###------------------------------------------------------------------------
 
 ### Deletes bid
-DELETE {{baseUrl}}/bids/1
+DELETE {{baseUrl}}/pokemon-cards/1/bids/1
 
 > {%
   client.test("success", function() {

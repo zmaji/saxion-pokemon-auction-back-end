@@ -34,24 +34,48 @@ router.post('/:cardID/bids', (req, res) => {
     });
 
     if (card) {
-        let bid = {
-            bidID: bids.length+1,
-            cardID: parseInt(req.params.cardID),
-            userID: userID,
-            bidPrice: bidPrice,
-            chosen: false
+
+        const result = bids.filter((bid) => {
+            return bid.cardID === card.cardID && bid.bidPrice >= bidPrice;
+        });
+
+        if (result.length === 0) {
+            let bid = {
+                bidID: bids.length+1,
+                cardID: parseInt(req.params.cardID),
+                userID: userID,
+                bidPrice: bidPrice,
+                chosen: false
+            }
+
+            bids.push(bid);
+
+            res
+                .status(StatusCodes.CREATED)
+                .send(bid);
+        } else if (result.length > 0) {
+            res
+                .status(StatusCodes.NOT_ACCEPTABLE)
+                .send("Bid price should be higher than current highest bid");
         }
-
-        bids.push(bid);
-
-        res
-            .status(StatusCodes.CREATED)
-            .send(bid)
     } else {
         res
             .status(StatusCodes.NOT_FOUND)
             .send('No card found to place bid on!');
     }
 });
+
+router.delete('/:cardID/bids/:bidID', (req, res) => {
+    let bidIndex = bids.findIndex((bid => bid.bidID === parseInt(req.params.bidID)));
+
+    if (bidIndex) {
+        cards.splice(bidIndex, 1);
+    }
+
+    res
+        .status(StatusCodes.NO_CONTENT)
+        .send(StatusCodes.NO_CONTENT);
+});
+
 
 module.exports = router;
