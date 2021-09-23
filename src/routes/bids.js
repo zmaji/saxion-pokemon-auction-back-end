@@ -4,6 +4,8 @@ const {StatusCodes} = require("http-status-codes");
 const cards = require("../data/pokemon-cards");
 const bids = require("../data/bids");
 
+const isLoggedIn = require("../middleware/is-logged-in");
+
 const router = express.Router();
 
 router.get('/:cardID/bids', (req, res) => {
@@ -26,7 +28,7 @@ router.get('/:cardID/bids', (req, res) => {
     }
 });
 
-router.post('/:cardID/bids', (req, res) => {
+router.post('/:cardID/bids', isLoggedIn, (req, res) => {
     let {userID, bidPrice} = req.body;
 
     const card = cards.find((card) => {
@@ -65,7 +67,7 @@ router.post('/:cardID/bids', (req, res) => {
     }
 });
 
-router.delete('/:cardID/bids/:bidID', (req, res) => {
+router.delete('/:cardID/bids/:bidID', isLoggedIn, (req, res) => {
     let bidIndex = bids.findIndex((bid => bid.bidID === parseInt(req.params.bidID)));
 
     if (bidIndex) {
