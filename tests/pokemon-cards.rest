@@ -62,42 +62,42 @@ GET {{baseUrl}}/pokemon-cards?cardType=Pokemon
     client.assert(response.status === 200, "Response status is not 200");
   });
 
-  client.test("GetPokemonsByPokemonType", function() {
-    client.assert(response.body[0].cardType === "Pokemon", "No Pokémon with card type Pokémon have been found");
+  client.test("GetCardsByPokemonType", function() {
+    client.assert(response.body[0].cardType === "Pokemon", "No card(s) with card type Pokémon have been found");
   });
 
  %}
 
-#### Get all Pokémon cards and filter on type for all energy cards
-#GET {{baseUrl}}/pokemon-cards?type=energy
-#
-#> {%
-#  client.test("success", function() {
-#    client.assert(response.status === 200, "Response status is not 200");
-#  });
-#
-#  client.test("GetPokemonsByEnergyType", function() {
-#    client.assert(response.body[0].cardType === "Energy", "No Pokémon with card type Energy have been found");
-#  });
-#
-# %}
+### Get all Pokémon cards and filter on type for all energy cards
+GET {{baseUrl}}/pokemon-cards?cardType=Energy
 
-#### Get all Pokémon cards and filter on type for all trainer cards
-#GET {{baseUrl}}/pokemon-cards?type=trainer
-#
-#> {%
-#  client.test("success", function() {
-#    client.assert(response.status !== 200, "Response status is not 200");
-#  });
-#
-#  client.test("GetPokemonsByTrainerType", function() {
-#    client.assert(response.body === "Return a list of cards by Trainer type", "Test succeeded!");
-#  });
-#
-# %}
+> {%
+  client.test("success", function() {
+    client.assert(response.status === 200, "Response status is not 200");
+  });
+
+  client.test("GetCardsByEnergyType", function() {
+    client.assert(response.body[0].cardType === "Energy", "No card(s) with card type Energy has been found");
+  });
+
+ %}
+
+### Get all Pokémon cards and filter on type for all trainer cards
+GET {{baseUrl}}/pokemon-cards?cardType=Trainer
+
+> {%
+  client.test("success", function() {
+    client.assert(response.status === 200, "Response status is not 200");
+  });
+
+  client.test("GetCardsByTrainerType", function() {
+    client.assert(response.body[0].cardType === "Trainer", "No card(s) with card type Trainer has been found");
+  });
+
+ %}
 
 ### Get all Pokémon cards and filter on the common rarity
-GET {{baseUrl}}/pokemon-cards?rarity=common
+GET {{baseUrl}}/pokemon-cards?rarity=Common
 
 > {%
   client.test("success", function() {
@@ -111,7 +111,7 @@ GET {{baseUrl}}/pokemon-cards?rarity=common
  %}
 
 ### Get all Pokémon cards and filter on the uncommon rarity
-GET {{baseUrl}}/pokemon-cards?rarity=uncommon
+GET {{baseUrl}}/pokemon-cards?rarity=Uncommon
 
 > {%
   client.test("success", function() {
@@ -125,7 +125,7 @@ GET {{baseUrl}}/pokemon-cards?rarity=uncommon
  %}
 
 ### Get all Pokémon cards and filter on the rare rarity
-GET {{baseUrl}}/pokemon-cards?rarity=rare
+GET {{baseUrl}}/pokemon-cards?rarity=Rare
 
 > {%
   client.test("success", function() {
@@ -133,27 +133,13 @@ GET {{baseUrl}}/pokemon-cards?rarity=rare
   });
 
   client.test("GetPokemonsByRareRarity", function() {
-    client.assert(response.body[0].rarity === "Rare", "No cards with the rarity rare have been found");
-  });
-
- %}
-
-### Get all Pokémon cards and filter on normal element
-GET {{baseUrl}}/pokemon-cards?element=normal
-
-> {%
-  client.test("success", function() {
-    client.assert(response.status === 200, "Response status is not 200");
-  });
-
-  client.test("GetPokemonsByNormalElement", function() {
-    client.assert(response.body[0].element === "Normal", "No card with the element normal have been found");
+    client.assert(response.body[0].rarity === "Rare", "No card(s) with the rarity rare have been found");
   });
 
  %}
 
 ### Get all Pokémon cards and filter on fire element
-GET {{baseUrl}}/pokemon-cards?element=fire
+GET {{baseUrl}}/pokemon-cards?element=Fire
 
 > {%
   client.test("success", function() {
@@ -161,13 +147,13 @@ GET {{baseUrl}}/pokemon-cards?element=fire
   });
 
   client.test("GetPokemonsByFireElement", function() {
-    client.assert(response.body[0].element === "Fire", "No card with the element fire have been found");
+    client.assert(response.body[0].element === "Fire", "No card(s) with the element fire have been found");
   });
 
  %}
 
 ### Get all Pokémon cards and filter on water element
-GET {{baseUrl}}/pokemon-cards?element=water
+GET {{baseUrl}}/pokemon-cards?element=Water
 
 > {%
   client.test("success", function() {
@@ -175,27 +161,27 @@ GET {{baseUrl}}/pokemon-cards?element=water
   });
 
   client.test("GetPokemonsByWaterElement", function() {
-    client.assert(response.body[0].element === "Water", "No card with the element water have been found");
+    client.assert(response.body[0].element === "Water", "No card(s) with the element water have been found");
   });
 
  %}
 
 ### Get all Pokémon cards and filter on grass element
-GET {{baseUrl}}/pokemon-cards?grass=grass
+GET {{baseUrl}}/pokemon-cards?element=Grass
 
 > {%
   client.test("success", function() {
-    client.assert(response.status !== 200, "Response status is not 200");
+    client.assert(response.status === 200, "Response status is not 200");
   });
 
   client.test("GetPokemonsByGrassElement", function() {
-    client.assert(response.body[0].element === "Grass", "No card with the element grass have been found");
+    client.assert(response.body[0].element === "Grass", "No card(s) with the element grass have been found");
   });
 
  %}
 
 ### Get all Pokémon cards and filter on electric element
-GET {{baseUrl}}/pokemon-cards?electric=electric
+GET {{baseUrl}}/pokemon-cards?element=Electric
 
 > {%
   client.test("success", function() {
@@ -203,27 +189,13 @@ GET {{baseUrl}}/pokemon-cards?electric=electric
   });
 
   client.test("GetPokemonsByElectricElement", function() {
-    client.assert(response.body[0].element === "Electric", "No card with the electric normal have been found");
-  });
-
- %}
-
-### Get all Pokémon cards and filter on weakness to normal elements
-GET {{baseUrl}}/pokemon-cards?weakness=normal
-
-> {%
-  client.test("success", function() {
-    client.assert(response.status === 200, "Response status is not 200");
-  });
-
-  client.test("GetPokemonsWithNormalWeakness", function() {
-    client.assert(response.body[0].weakness === "Normal", "No card with a weakness to normal have been found");
+    client.assert(response.body[0].element === "Electric", "No card(s) with the electric normal have been found");
   });
 
  %}
 
 ### Get all Pokémon cards and filter on weakness to fire elements
-GET {{baseUrl}}/pokemon-cards?weakness=fire
+GET {{baseUrl}}/pokemon-cards?weakness=Fire
 
 > {%
   client.test("success", function() {
@@ -231,13 +203,13 @@ GET {{baseUrl}}/pokemon-cards?weakness=fire
   });
 
   client.test("GetPokemonsWithFireWeakness", function() {
-    client.assert(response.body[0].weakness === "Fire", "No card with a weakness to fire have been found");
+    client.assert(response.body[0].weakness === "Fire", "No card(s) with a weakness to fire have been found");
   });
 
  %}
 
 ### Get all Pokémon cards and filter on weakness to water elements
-GET {{baseUrl}}/pokemon-cards?weakness=water
+GET {{baseUrl}}/pokemon-cards?weakness=Water
 
 > {%
   client.test("success", function() {
@@ -245,13 +217,13 @@ GET {{baseUrl}}/pokemon-cards?weakness=water
   });
 
   client.test("GetPokemonsWithWaterWeakness", function() {
-    client.assert(response.body[0].weakness === "Water", "No card with a weakness to water have been found");
+    client.assert(response.body[0].weakness === "Water", "No card(s) with a weakness to water have been found");
   });
 
  %}
 
 ### Get all Pokémon cards and filter on weakness to grass elements
-GET {{baseUrl}}/pokemon-cards?weakness=grass
+GET {{baseUrl}}/pokemon-cards?weakness=Grass
 
 > {%
   client.test("success", function() {
@@ -259,13 +231,13 @@ GET {{baseUrl}}/pokemon-cards?weakness=grass
   });
 
   client.test("GetPokemonsWithGrassWeakness", function() {
-    client.assert(response.body[0].weakness === "Grass", "No card with a weakness to grass have been found");
+    client.assert(response.body[0].weakness === "Grass", "No card(s) with a weakness to grass have been found");
   });
 
  %}
 
 ### Get all Pokémon cards and filter on weakness to electric elements
-GET {{baseUrl}}/pokemon-cards?weakness=electric
+GET {{baseUrl}}/pokemon-cards?weakness=Electric
 
 > {%
   client.test("success", function() {
@@ -273,27 +245,13 @@ GET {{baseUrl}}/pokemon-cards?weakness=electric
   });
 
   client.test("GetPokemonsWithElectricWeakness", function() {
-    client.assert(response.body[0].weakness === "Electric", "No card with a weakness to electric have been found");
-  });
-
- %}
-
-### Get all Pokémon cards and filter on resistance to normal elements
-GET {{baseUrl}}/pokemon-cards?resistance=normal
-
-> {%
-  client.test("success", function() {
-    client.assert(response.status === 200, "Response status is not 200");
-  });
-
-  client.test("GetPokemonsWithNormalResistance", function() {
-    client.assert(response.body[0].resistance === "Normal", "No card with a resistance to normal have been found");
+    client.assert(response.body[0].weakness === "Electric", "No card(s) with a weakness to electric have been found");
   });
 
  %}
 
 ### Get all Pokémon cards and filter on resistance to fire elements
-GET {{baseUrl}}/pokemon-cards?resistance=fire
+GET {{baseUrl}}/pokemon-cards?resistance=Fire
 
 > {%
   client.test("success", function() {
@@ -301,13 +259,13 @@ GET {{baseUrl}}/pokemon-cards?resistance=fire
   });
 
   client.test("GetPokemonsWithFireResistance", function() {
-    client.assert(response.body[0].resistance === "Fire", "No card with a resistance to fire have been found");
+    client.assert(response.body[0].resistance === "Fire", "No card(s) with a resistance to fire have been found");
   });
 
  %}
 
 ### Get all Pokémon cards and filter on resistance to water elements
-GET {{baseUrl}}/pokemon-cards?resistance=water
+GET {{baseUrl}}/pokemon-cards?resistance=Water
 
 > {%
   client.test("success", function() {
@@ -315,13 +273,13 @@ GET {{baseUrl}}/pokemon-cards?resistance=water
   });
 
   client.test("GetPokemonsWithWaterResistance", function() {
-    client.assert(response.body[0].resistance === "Water", "No card with a resistance to water have been found");
+    client.assert(response.body[0].resistance === "Water", "No card(s) with a resistance to water have been found");
   });
 
  %}
 
 ### Get all Pokémon cards and filter on resistance to grass elements
-GET {{baseUrl}}/pokemon-cards?resistance=grass
+GET {{baseUrl}}/pokemon-cards?resistance=Grass
 
 > {%
   client.test("success", function() {
@@ -329,13 +287,13 @@ GET {{baseUrl}}/pokemon-cards?resistance=grass
   });
 
   client.test("GetPokemonsWithGrassResistance", function() {
-    client.assert(response.body[0].resistance === "Grass", "No card with a resistance to grass have been found");
+    client.assert(response.body[0].resistance === "Grass", "No card(s) with a resistance to grass have been found");
   });
 
  %}
 
 ### Get all Pokémon cards and filter on resistance to electric elements
-GET {{baseUrl}}/pokemon-cards?resistance=electric
+GET {{baseUrl}}/pokemon-cards?resistance=Electric
 
 > {%
   client.test("success", function() {
@@ -343,16 +301,30 @@ GET {{baseUrl}}/pokemon-cards?resistance=electric
   });
 
   client.test("GetPokemonsWithElectricResistance", function() {
-    client.assert(response.body[0].resistance === "Electric", "No card with a resistance to electric have been found");
+    client.assert(response.body[0].resistance === "Electric", "No card(s) with a resistance to electric have been found");
   });
 
  %}
 
 ###------------------------------------------------------------------------
 
+### Loging in as an admin
+POST {{baseUrl}}/credentials
+Content-Type: application/json
+
+{
+  "email": "ashKetchum@pokemon.com",
+  "password": "GottaCatchEmAll"
+}
+
+> {%
+ client.global.set("token", response.body.token);
+%}
+
 ### Adds a Pokémon card (auction)
 POST {{baseUrl}}/pokemon-cards
 Content-Type: application/json
+authorization: Bearer {{token}}
 
 {
   "userID": 1,
@@ -373,10 +345,53 @@ Content-Type: application/json
   });
 
   client.test("AddPokemonCard", function() {
-    client.assert(response.body.name === "Psyduck", "Test succeeded!");
+    client.assert(response.body.name === "Psyduck", "");
   });
 
  %}
+
+### Loging in as a normal user
+POST {{baseUrl}}/credentials
+Content-Type: application/json
+
+{
+  "email": "brockHarrison@pokemon.com",
+  "password": "pebbleMan"
+}
+
+> {%
+ client.global.set("token", response.body.token);
+%}
+
+### Adds a Pokémon card (auction)
+POST {{baseUrl}}/pokemon-cards
+Content-Type: application/json
+authorization: Bearer {{token}}
+
+{
+  "userID": 1,
+  "name": "Psyduck",
+  "startingAmount": 65,
+  "imageURL": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/054.png",
+  "availabilityDate": "10-9-2021",
+  "cardType": "Pokemon",
+  "rarity": "Normal",
+  "element": "Water",
+  "weakness": "Electric",
+  "resistance": "Fire"
+}
+
+> {%
+  client.test("success", function() {
+    client.assert(response.status === 201, "Response status is not 201");
+  });
+
+  client.test("AddPokemonCard", function() {
+    client.assert(response.body.name === "Psyduck", "");
+  });
+
+ %}
+
 
 ###------------------------------------------------------------------------
 
