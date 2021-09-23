@@ -1,4 +1,5 @@
 module.exports = [
+    // Pokémon cards
     {
         cardID: 1,
         userID: 1,
@@ -50,5 +51,26 @@ module.exports = [
         element: 'Grass',
         weakness: 'Fire',
         resistance: 'Water'
+    },
+    // Energy cards
+    {
+        cardID: 5,
+        userID: 1,
+        name: 'Grass Energy',
+        startingAmount: 60,
+        imageURL: 'https://cdn2.bulbagarden.net/upload/thumb/e/e4/GrassEnergySwordShield.jpg/430px-GrassEnergySwordShield.jpg',
+        availabilityDate: '27-9-2021',
+        cardType: 'Energy',
+    },
+
+    // Trainer cards
+    {
+        cardID: 6,
+        userID: 1,
+        name: 'Computer Search',
+        startingAmount: 100,
+        imageURL: 'https://cdn2.bulbagarden.net/upload/thumb/8/85/ComputerSearchBoundariesCrossed137.jpg/431px-ComputerSearchBoundariesCrossed137.jpg',
+        availabilityDate: '27-9-2021',
+        cardType: 'Trainer',
     }
 ]
