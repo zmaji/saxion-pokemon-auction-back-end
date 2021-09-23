@@ -12,7 +12,8 @@ module.exports = [
         secret: uuidv4(),
         city: 'PalletTown',
         address: 'OakRoad 12',
-        zipCode: '5690 PT'
+        zipCode: '5690 PT',
+        roles: ['admin', 'user']
     },
     {
         userID: 2,
@@ -24,7 +25,8 @@ module.exports = [
         secret: uuidv4(),
         city: 'Pewter City',
         address: 'rockyMountains 3',
-        zipCode: '8721 PC'
+        zipCode: '8721 PC',
+        roles: ['user']
     },
     {
         userID: 3,
@@ -36,6 +38,7 @@ module.exports = [
         secret: uuidv4(),
         city: 'Cerulian City',
         address: 'pond 33',
-        zipCode: '9540 CT'
+        zipCode: '9540 CT',
+        roles: ['user']
     }
 ]

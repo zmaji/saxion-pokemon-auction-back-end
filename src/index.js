@@ -7,6 +7,7 @@ let users = require('./data/users');
 const app = express();
 const bodyParser = require("body-parser");
 const path = require("path");
+const isLoggedIn = require('./middleware/is-logged-in')
 
 app.set('views', path.join(__dirname, 'views'));
 
@@ -18,7 +19,7 @@ app.get('', (req, res) => {
     for (let user of users) {
         user.pokemon = cards.find((card) => {
             return card.userID === user.userID;
-        })
+        });
     }
     res
         .status(StatusCodes.OK)
@@ -26,6 +27,7 @@ app.get('', (req, res) => {
 });
 
 // Pokemon card base route
+app.use('/auth', require('./routes/auth'));
 app.use('/pokemon-cards', require('./routes/pokemon-cards'));
 app.use('/:cardID', require('./routes/bids'));
 

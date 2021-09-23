@@ -1,11 +1,15 @@
 const express = require('express');
-const { StatusCodes} = require('http-status-codes');
+const { StatusCodes } = require('http-status-codes');
 let cards = require('../data/pokemon-cards');
 let bids = require('../data/bids');
 
+const isString = (currentValue) => currentValue.type = String;
+const isNumber = (currentValue) => currentValue.type = Number;
+
 const router = express.Router();
-const {forwardAuthenticated, forwardUnAuthenticated} = require('../middleware/auth');
+const {forwardAuthenticated, forwardUnAuthenticated } = require('../middleware/auth');
 const isLoggedIn = require('../middleware/is-logged-in');
+const isAdmin = require('../middleware/is-admin');
 
 router.get('', (req, res) => {
     let filters = req.query;
@@ -40,14 +44,22 @@ router.get('/:cardID', (req, res) => {
 
 });
 
-router.post('/:cardID', (req, res) => {
+router.post('/', isLoggedIn, isAdmin, (req, res) => {
     let {userID, name, startingAmount, imageURL, availabilityDate, cardType, rarity, element, weakness, resistance } = req.body;
+
+    if ([userID, startingAmount].every(isNumber)) {
+        console.log('theyre numbers')
+    }
+
+    if ([name, imageURL, availabilityDate, cardType, rarity, element, weakness, resistance].every(isString)) {
+        console.log('theyre strings')
+    }
 
     let pokemonCard = {
         cardID: cards.length + 1,
-        userID: parseInt(userID),
+        userID: userID,
         name: name,
-        startingAmount: parseInt(startingAmount),
+        startingAmount: startingAmount,
         imageURL: imageURL,
         availabilityDate: availabilityDate,
         cardType: cardType,
@@ -65,7 +77,7 @@ router.post('/:cardID', (req, res) => {
         .send(pokemonCard);
 });
 
-router.put('/:cardID', (req, res) => {
+router.put('/:cardID', isLoggedIn, isAdmin, (req, res) => {
     let index = cards.findIndex((card => card.cardID === parseInt(req.params.cardID)));
     let {userID, name, startingAmount, imageURL, availabilityDate, cardType, rarity, element, weakness, resistance } = req.body;
 
@@ -89,7 +101,7 @@ router.put('/:cardID', (req, res) => {
         .send(cards[index]);
 });
 
-router.delete('/:cardID', (req, res) => {
+router.delete('/:cardID', isLoggedIn, isAdmin, (req, res) => {
     let index = cards.findIndex((card => card.cardID === parseInt(req.params.cardID)));
     if (index) {
         cards.splice(index, 1);

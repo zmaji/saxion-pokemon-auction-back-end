@@ -1,33 +1,45 @@
 const { StatusCodes} = require('http-status-codes');
 const users = require('../data/users');
-const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const isLoggedIn = (req, res, next) => {
     console.log('Authenticating...');
 
-    const data = getDataFromRequest(req);
+    const token = getTokenFromRequest(req);
 
-    if (data) {
-        const [username, password] = data;
-        const user = users.find((user) => {
-            return user.firstName === username;
-        })
-
-        if (user) {
-            const result = bcrypt.compareSync(password, user.password);
-            if (result) {
-                req.user = user;
-                next();
-            }
+    if (token) {
+        const payload = verifyToken(token);
+        if (payload) {
+            req.user = payload;
+            return next();
         }
     }
+
+    res.status(StatusCodes.UNAUTHORIZED).send('Authentication required')
 };
 
-const getDataFromRequest = (req) => {
-    const authHeader = req.header(['authorization'].toString());
+const getTokenFromRequest = (req) => {
+    const authHeader = req.headers['authorization'];
 
     if (authHeader) {
-        return authHeader.split(' ');
+        return authHeader.split(' ')[1];
+    }
+
+    return false;
+}
+
+const verifyToken = (token) => {
+    const tokenPayload = jwt.decode(token);
+
+    if (tokenPayload) {
+        const user = users.find(user => user.email === tokenPayload.email);
+        if (user) {
+            try {
+                return jwt.verify(token, user.secret);
+            } catch(e) {
+                return false;
+            }
+        }
     }
 
     return false;
