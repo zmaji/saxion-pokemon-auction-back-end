@@ -32,6 +32,9 @@ router.get('/:cardID', (req, res) => {
         return card.cardID === parseInt(req.params.cardID);
     });
 
+    result.bids = bids.filter(bid => bid.cardID === result.cardID);
+
+
     if (result) {
         res
             .status(StatusCodes.OK) // Add check if an object has been found or not

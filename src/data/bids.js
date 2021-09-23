@@ -4,13 +4,13 @@ module.exports = [
         cardID: 1,
         userID: 1,
         bidPrice: 20,
-        chosen: false
+        hasWon: false
     },
     {
         bidID: 2,
         cardID: 1,
         userID: 1,
         bidPrice: 20,
-        chosen: false
+        hasWon: false
     }
 ]

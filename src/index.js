@@ -17,7 +17,7 @@ app.use(require('./middleware/log-time'));
 
 app.get('', (req, res) => {
     for (let user of users) {
-        user.pokemon = cards.find((card) => {
+        user.cards = cards.find((card) => {
             return card.userID === user.userID;
         });
     }
@@ -29,10 +29,10 @@ app.get('', (req, res) => {
 // Pokemon card base route
 app.use('/credentials', require('./routes/credentials'));
 app.use('/pokemon-cards', require('./routes/pokemon-cards'));
-app.use('/:cardID', require('./routes/bids'));
+app.use('/pokemon-cards', require('./routes/bids'));
 
-// Account base route
-app.use('/account', require('./routes/account'));
+// users base route
+app.use('/users', require('./routes/users'));
 
 // Admin base route
 
