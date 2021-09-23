@@ -54,19 +54,19 @@ GET {{baseUrl}}/pokemon-cards?starting-amount=15
 
  %}
 
-#### Get all Pokémon cards and filter on type for all Pokémon cards
-#GET {{baseUrl}}/pokemon-cards?type=pokemon
-#
-#> {%
-#  client.test("success", function() {
-#    client.assert(response.status === 200, "Response status is not 200");
-#  });
-#
-#  client.test("GetPokemonsByPokemonType", function() {
-#    client.assert(response.body[0].cardType === "Pokemon", "No Pokémon with card type Pokémon have been found");
-#  });
-#
-# %}
+### Get all Pokémon cards and filter on type for all Pokémon cards
+GET {{baseUrl}}/pokemon-cards?type=pokemon
+
+> {%
+  client.test("success", function() {
+    client.assert(response.status === 200, "Response status is not 200");
+  });
+
+  client.test("GetPokemonsByPokemonType", function() {
+    client.assert(response.body[0].cardType === "Pokemon", "No Pokémon with card type Pokémon have been found");
+  });
+
+ %}
 
 #### Get all Pokémon cards and filter on type for all energy cards
 #GET {{baseUrl}}/pokemon-cards?type=energy

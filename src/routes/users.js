@@ -1,6 +1,5 @@
 const express = require('express');
 const { StatusCodes} = require('http-status-codes');
-const isLoggedIn = require('../middleware/is-logged-in');
 const users = require("../data/users");
 const cards = require("../data/pokemon-cards");
 const bids = require("../data/bids");
