@@ -7,7 +7,6 @@ const isString = (currentValue) => currentValue.type = String;
 const isNumber = (currentValue) => currentValue.type = Number;
 
 const router = express.Router();
-const {forwardAuthenticated, forwardUnAuthenticated } = require('../middleware/auth');
 const isLoggedIn = require('../middleware/is-logged-in');
 const isAdmin = require('../middleware/is-admin');
 
