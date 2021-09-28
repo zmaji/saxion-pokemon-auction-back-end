@@ -18,7 +18,7 @@ exports.getBids = (req, res) => {
     } else {
         res
             .status(StatusCodes.NOT_FOUND)
-            .send(StatusCodes.NOT_FOUND);
+            .send("No bids have been found for this card!");
     }
 };
 
