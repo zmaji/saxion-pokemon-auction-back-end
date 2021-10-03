@@ -4,7 +4,7 @@ const {StatusCodes} = require("http-status-codes");
 const helper = require('../helper')
 
 exports.getCards = (req, res) => {
-    let filters = req.query;
+    let filters = req.query
 
     const result = cards.filter(card => {
         let isValid = true;

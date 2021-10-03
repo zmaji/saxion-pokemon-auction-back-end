@@ -35,13 +35,13 @@ GET {{baseUrl}}/pokemon-cards?name=Pikachu
   });
 
   client.test("GetPokemonCardsByName", function() {
-    client.assert(response.body[0].name === "Pikachu", "No card found including 'Pikachu'");
+    client.assert(response.body[0].name === "Pikachu", "No card name including 'Pikachu' has been found");
   });
 
  %}
 
 ### Get all Pokémon cards that have a starting amount of 15
-GET {{baseUrl}}/pokemon-cards?starting-amount=15
+GET {{baseUrl}}/pokemon-cards?startingamount=15
 
 > {%
   client.test("success", function() {
@@ -49,7 +49,7 @@ GET {{baseUrl}}/pokemon-cards?starting-amount=15
   });
 
   client.test("GetPokemonsByStartingAmount", function() {
-    client.assert(response.body[0].startingAmount === 15, "A card with startingAmount 15 has been found");
+    client.assert(response.body[0].startingAmount === 15, "No card with starting amount '15' has been found");
   });
 
  %}
@@ -345,7 +345,7 @@ authorization: Bearer {{token}}
   });
 
   client.test("AddPokemonCard", function() {
-    client.assert(response.body.name === "Psyduck", "");
+    client.assert(response.body.name === "Psyduck", "Pokemon card already exists!");
   });
 
  %}
