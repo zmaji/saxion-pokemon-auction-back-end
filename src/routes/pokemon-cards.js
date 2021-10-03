@@ -15,6 +15,6 @@ router.post('', isLoggedIn, isAdmin, pokemonCardController.saveCard);
 
 router.put('/:cardID', isLoggedIn, isAdmin, pokemonCardController.updateCard);
 
-router.delete('/:cardID', isLoggedIn, isAdmin, pokemonCardController.updateCard);
+router.delete('/:cardID', isLoggedIn, isAdmin, pokemonCardController.deleteCard);
 
 module.exports = router;

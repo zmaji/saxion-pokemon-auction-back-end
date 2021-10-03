@@ -9,7 +9,7 @@ const login = (email, password) => {
         return user.email === email;
     })
 
-    if (email && user.password) {
+    if (user) {
         const result = bcrypt.compareSync(password, user.password);
         if (result) {
             return jwt.sign({

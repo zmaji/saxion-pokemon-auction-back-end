@@ -9,7 +9,9 @@ exports.getCards = (req, res) => {
     const result = cards.filter(card => {
         let isValid = true;
         for (let key in filters) {
-            isValid = isValid && card[key] === filters[key];
+            if (card[key] && filters[key]) {
+                isValid = isValid && card[key].toLowerCase() === filters[key].toLowerCase();
+            }
         }
         return isValid;
     });
