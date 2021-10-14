@@ -3,13 +3,20 @@ const port = 3000;
 const { StatusCodes} = require('http-status-codes');
 let cards = require('./data/pokemon-cards');
 let users = require('./data/users');
-
 const app = express();
-const bodyParser = require("body-parser");
-const path = require("path");
-const isLoggedIn = require('./middleware/is-logged-in')
 
-app.set('views', path.join(__dirname, 'views'));
+const bodyParser = require("body-parser");
+const fileUpload = require('express-fileupload');
+
+app.use(fileUpload({
+    createParentPath: true
+}));
+
+app.use(express.urlencoded({
+    extended: true
+}))
+
+app.use(express.static('public'));
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
