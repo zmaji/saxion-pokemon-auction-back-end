@@ -7,6 +7,7 @@ module.exports = [
         roleID: 2,
         firstName: 'Ash',
         lastName: 'Ketchum',
+        avatar: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/85a954df-43b3-4b66-9e8d-94fe01b0451f/da9k0wb-1ae6c8d8-0b1f-46db-a6c9-3f9b44fc29bc.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzg1YTk1NGRmLTQzYjMtNGI2Ni05ZThkLTk0ZmUwMWIwNDUxZlwvZGE5azB3Yi0xYWU2YzhkOC0wYjFmLTQ2ZGItYTZjOS0zZjliNDRmYzI5YmMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.ySQkI8GmpoOQ3KvsCwlwXd1l_QjJ7DsuqmcGP9fwnsE',
         email: 'ashKetchum@pokemon.com',
         password: bcrypt.hashSync('GottaCatchEmAll', 12), // GottaCatchEmAll
         secret: uuidv4(),
@@ -20,6 +21,7 @@ module.exports = [
         roleID: 1,
         firstName: 'Brock',
         lastName: 'Harrison',
+        avatar: 'https://e7.pngegg.com/pngimages/335/411/png-clipart-brock-pikachu-groudon-pokemon-diamond-and-pearl-ash-ketchum-pikachu-game-child.png',
         email: 'brockHarrison@pokemon.com',
         password: bcrypt.hashSync('pebbleMan', 12), // pebbleMan
         secret: uuidv4(),
@@ -33,6 +35,7 @@ module.exports = [
         roleID: 1,
         firstName: 'Misty',
         lastName: 'Kasumi',
+        avatar: 'https://cdn2.bulbagarden.net/upload/thumb/b/b1/Misty_AG.png/200px-Misty_AG.png',
         email: 'mistyKasumi@pokemon.com',
         password: bcrypt.hashSync('iLikeWater', 12), // iLikeWater,
         secret: uuidv4(),
