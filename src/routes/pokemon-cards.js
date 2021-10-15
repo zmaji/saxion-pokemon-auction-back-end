@@ -29,7 +29,7 @@ router.get('/:cardID', (req, res) => {
     }
 });
 
-router.post('', (req, res) => {
+    router.post('', isLoggedIn, isAdmin, (req, res) => {
     let result = pokemonCardController.saveCard(req.body, req.files);
 
     if (result) {
