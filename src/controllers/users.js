@@ -48,26 +48,31 @@ exports.getUserBids = (req, res) => {
         .send(result);
 };
 
-exports.saveUser = (body) => {
+exports.saveUser = (body, files) => {
     let isValid = true;
     let newUser = {};
-
     for (let key of requiredUserFields) {
         if (isValid) {
-            if (body.hasOwnProperty(key)) {
-                isValid = body[key].length > 0;
-            } else {
-                isValid = false;
-                break;
+            if (key !== "avatar") {
+                if (body.hasOwnProperty(key) ) {
+                    isValid = body[key].length > 0;
+                } else {
+                    isValid = false;
+                    break;
+                }
             }
         }
     }
 
     if (isValid) {
         newUser.userID = users.length +1;
+        let image = files.avatar;
+        image.name =  Date.now() + image.name;
+        image.mv('./public/uploads/' + image.name);
+        newUser.avatar = image.name;
 
         for (let key in body) {
-            if (key !== "userID" || key !== "roles" || key !== "password") {
+            if (key !== "userID" || key !== "roles" || key !== "password" || key !== "avatar") {
                 if (baseUser.hasOwnProperty(key)) {
                     newUser[key] = body[key];
                 }
@@ -76,6 +81,7 @@ exports.saveUser = (body) => {
 
         newUser.password = bcrypt.hashSync(body.password, 12);
         newUser.secret = uuidv4();
+        newUser.roles = ['user'];
 
         users.push(newUser);
         return newUser;
