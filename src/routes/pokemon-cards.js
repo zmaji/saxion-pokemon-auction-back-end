@@ -29,7 +29,7 @@ router.get('/:cardID', (req, res) => {
     }
 });
 
-    router.post('', isLoggedIn, isAdmin, (req, res) => {
+router.post('', isLoggedIn, isAdmin, (req, res) => {
     let result = pokemonCardController.saveCard(req.body, req.files);
 
     if (result) {
@@ -39,7 +39,7 @@ router.get('/:cardID', (req, res) => {
     } else {
         res
             .status(StatusCodes.BAD_REQUEST)
-            .send("Fields we're not filled properly");
+            .send("Fields were not filled properly");
     }
 });
 
