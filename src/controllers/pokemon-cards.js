@@ -97,13 +97,11 @@ exports.updateCard = (params, body, files) => {
     }
 };
 
-exports.deleteCard = (req, res) => {
-    let index = cards.findIndex((card => card.cardID === parseInt(req.params.cardID)));
-    if (index) {
-        cards.splice(index, 1);
-    }
+exports.deleteCard = (params) => {
+    let index = cards.findIndex((card => card.cardID === parseInt(params.cardID)));
 
-    res
-        .status(StatusCodes.NO_CONTENT)
-        .send(StatusCodes.NO_CONTENT);
+    if (index !== -1) {
+        cards.splice(index, 1);
+        return index;
+    }
 };

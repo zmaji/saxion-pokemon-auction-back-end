@@ -57,6 +57,17 @@ router.put('/:cardID', (req, res) => {
     }
 });
 
-router.delete('/:cardID', isLoggedIn, isAdmin, pokemonCardController.deleteCard);
+router.delete('/:cardID', (req, res) => {
+    let result = pokemonCardController.deleteCard
+
+    if (result) {
+        res
+            .sendStatus(StatusCodes.NO_CONTENT);
+    } else {
+        res
+            .sendStatus(StatusCodes.NOT_FOUND);
+    }
+});
+
 
 module.exports = router;
