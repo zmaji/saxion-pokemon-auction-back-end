@@ -1,4 +1,5 @@
 let cards = require('../data/pokemon-cards');
+let users = require('../data/users');
 let bids = require('../data/bids');
 const {StatusCodes} = require("http-status-codes");
 
@@ -24,7 +25,7 @@ exports.getBids = (req, res) => {
 
 exports.postBid = (req, res) => {
     let {userID, bidPrice} = req.body;
-
+    let bidOwner = users.find(user => user.userID === parseInt(userID));
     const card = cards.find((card) => {
         return card.cardID === parseInt(req.params.cardID);
     });
@@ -40,6 +41,7 @@ exports.postBid = (req, res) => {
                 bidID: bids.length+1,
                 cardID: parseInt(req.params.cardID),
                 userID: userID,
+                ownerName: bidOwner.firstName + ' ' + bidOwner.lastName,
                 bidPrice: bidPrice,
                 chosen: false
             }
