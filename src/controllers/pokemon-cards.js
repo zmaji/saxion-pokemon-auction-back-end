@@ -99,9 +99,10 @@ exports.updateCard = (params, body, files) => {
 
 exports.deleteCard = (params) => {
     let index = cards.findIndex((card => card.cardID === parseInt(params.cardID)));
-
     if (index !== -1) {
         cards.splice(index, 1);
-        return index;
+        return true;
     }
+
+    return false
 };
