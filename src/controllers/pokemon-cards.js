@@ -75,6 +75,7 @@ exports.saveCard = (body, files) => {
 
 exports.updateCard = (params, body, files) => {
     let result = cards.find(card => card.cardID === parseInt(params.cardID))
+    console.log(body)
 
     if (result) {
         for (let key in body) {
@@ -83,13 +84,17 @@ exports.updateCard = (params, body, files) => {
             }
         }
 
-        let image = files.image;
-        image.name =  Date.now() + image.name;
-        image.mv('./public/uploads/' + image.name);
+        if (files) {
+            let image = files.image;
+            image.name =  Date.now() + image.name;
+            image.mv('./public/uploads/' + image.name);
 
-        if (image) {
             result.image = image.name;
+
+        } else {
+            return false;
         }
+
 
         return result;
     } else {
