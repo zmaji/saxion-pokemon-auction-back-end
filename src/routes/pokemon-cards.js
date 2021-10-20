@@ -43,7 +43,7 @@ router.post('', isLoggedIn, isAdmin, (req, res) => {
     }
 });
 
-router.put('/:cardID', (req, res) => {
+router.put('/:cardID', isLoggedIn, isAdmin, (req, res) => {
     let result = pokemonCardController.updateCard(req.params, req.body, req.files);
 
     if (result) {
@@ -57,7 +57,7 @@ router.put('/:cardID', (req, res) => {
     }
 });
 
-router.delete('/:cardID', (req, res) => {
+router.delete('/:cardID', isLoggedIn, isAdmin, (req, res) => {
     let result = pokemonCardController.deleteCard(req.params);
 
     if (result) {

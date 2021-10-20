@@ -24,6 +24,26 @@ exports.getBids = (req, res) => {
     }
 };
 
+exports.getBid = (req, res) => {
+    const card = cards.find((card) => {
+        return card.cardID === parseInt(req.params.cardID);
+    });
+
+    if (card) {
+        const bid = bids.find((bid) => {
+            return bid.bidID === parseInt(req.params.bidID);
+        });
+
+        res
+            .status(StatusCodes.OK)
+            .send(bid);
+    } else {
+        res
+            .status(StatusCodes.NOT_FOUND)
+            .send("No bids have been found for this card!");
+    }
+};
+
 exports.postBid = (req, res) => {
     const {bidPrice} = req.body;
     const tokenPayload = jwt.decode(req.headers['authorization'].split(' ')[1]);
@@ -66,14 +86,12 @@ exports.postBid = (req, res) => {
     }
 };
 
-exports.deleteBid = (req, res) => {
-    let bidIndex = bids.findIndex((bid => bid.bidID === parseInt(req.params.bidID)));
+exports.deleteBid = (params) => {
+    let bidIndex = bids.findIndex((bid => bid.bidID === parseInt(params.bidID)));
 
-    if (bidIndex) {
+    if (bidIndex !== -1) {
         cards.splice(bidIndex, 1);
+        return true;
     }
-
-    res
-        .status(StatusCodes.NO_CONTENT)
-        .send(StatusCodes.NO_CONTENT);
+    return false;
 };
