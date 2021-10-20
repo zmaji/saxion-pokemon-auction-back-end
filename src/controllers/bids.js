@@ -2,6 +2,7 @@ let cards = require('../data/pokemon-cards');
 let users = require('../data/users');
 let bids = require('../data/bids');
 const {StatusCodes} = require("http-status-codes");
+const jwt = require('jsonwebtoken');
 
 exports.getBids = (req, res) => {
     const card = cards.find((card) => {
@@ -24,14 +25,16 @@ exports.getBids = (req, res) => {
 };
 
 exports.postBid = (req, res) => {
-    let {userID, bidPrice} = req.body;
-    let bidOwner = users.find(user => user.userID === parseInt(userID));
+    const {bidPrice} = req.body;
+    const tokenPayload = jwt.decode(req.headers['authorization'].split(' ')[1]);
+    const bidOwner = users.find(user => user.email === tokenPayload.email);
     const card = cards.find((card) => {
         return card.cardID === parseInt(req.params.cardID);
     });
 
-    if (card) {
+    console.log(bidPrice)
 
+    if (card) {
         const result = bids.filter((bid) => {
             return bid.cardID === card.cardID && bid.bidPrice >= bidPrice;
         });
@@ -40,10 +43,10 @@ exports.postBid = (req, res) => {
             let bid = {
                 bidID: bids.length+1,
                 cardID: parseInt(req.params.cardID),
-                userID: userID,
+                userID: bidOwner.userID,
                 ownerName: bidOwner.firstName + ' ' + bidOwner.lastName,
-                bidPrice: bidPrice,
-                chosen: false
+                bidPrice: parseInt(bidPrice),
+                hasWon: false
             }
 
             bids.push(bid);
