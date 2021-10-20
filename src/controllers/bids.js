@@ -90,7 +90,7 @@ exports.deleteBid = (params) => {
     let bidIndex = bids.findIndex((bid => bid.bidID === parseInt(params.bidID)));
 
     if (bidIndex !== -1) {
-        cards.splice(bidIndex, 1);
+        bids.splice(bidIndex, 1);
         return true;
     }
     return false;
