@@ -95,6 +95,7 @@ exports.updateCard = (params, body, files) => {
     } else {
         return null;
     }
+    return false;
 };
 
 exports.deleteCard = (params) => {

@@ -51,5 +51,58 @@ module.exports = [
         element: 'Grass',
         weakness: 'Fire',
         resistance: 'Water'
+    },
+    {
+        cardID: 5,
+        userID: 2,
+        name: 'Raichu',
+        startingAmount: 50,
+        image: 'Raichu.BS.14.webp',
+        availabilityDate: '2021-10-30',
+        cardType: 'Pokemon',
+        rarity: 'Rare',
+        element: 'Electric',
+        weakness: 'Water',
+        resistance: 'Electric'
+    },
+    {
+        cardID: 6,
+        userID: 2,
+        name: 'Blastoise',
+        startingAmount: 50,
+        image: 'Blastoise.BS.2.webp',
+        availabilityDate: '2021-10-30',
+        cardType: 'Pokemon',
+        rarity: 'Rare',
+        element: 'Water',
+        weakness: 'Grass',
+        resistance: 'Fire'
+    },
+    {
+        cardID: 7,
+        userID: 2,
+        name: 'Charizard',
+        startingAmount: 50,
+        image: 'Charizard.BS.4.webp',
+        availabilityDate: '2021-10-30',
+        cardType: 'Pokemon',
+        rarity: 'Rare',
+        element: 'Fire',
+        weakness: 'Water',
+        resistance: 'Grass'
+    },
+    {
+        cardID: 8,
+        userID: 2,
+        name: 'Venusaur',
+        startingAmount: 50,
+        image: 'Venusaur.BS.15.webp',
+        availabilityDate: '2021-10-30',
+        cardType: 'Pokemon',
+        rarity: 'Rare',
+        element: 'Grass',
+        weakness: 'Fire',
+        resistance: 'Water'
     }
+
 ]
