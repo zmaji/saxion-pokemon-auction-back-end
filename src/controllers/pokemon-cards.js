@@ -1,6 +1,6 @@
 let cards = require('../data/pokemon-cards');
 let bids = require('../data/bids');
-const {StatusCodes} = require("http-status-codes");
+
 const baseCard = {
     cardID: null,
     userID: null,
@@ -75,7 +75,6 @@ exports.saveCard = (body, files) => {
 
 exports.updateCard = (params, body, files) => {
     let result = cards.find(card => card.cardID === parseInt(params.cardID))
-    console.log(body)
 
     if (result) {
         for (let key in body) {

@@ -52,8 +52,6 @@ exports.postBid = (req, res) => {
         return card.cardID === parseInt(req.params.cardID);
     });
 
-    console.log(bidPrice)
-
     if (card) {
         const result = bids.filter((bid) => {
             return bid.cardID === card.cardID && bid.bidPrice >= bidPrice;
