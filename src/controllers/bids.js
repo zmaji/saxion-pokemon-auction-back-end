@@ -4,23 +4,18 @@ let bids = require('../data/bids');
 const {StatusCodes} = require("http-status-codes");
 const jwt = require('jsonwebtoken');
 
-exports.getBids = (req, res) => {
+exports.getBids = (params) => {
     const card = cards.find((card) => {
-        return card.cardID === parseInt(req.params.cardID);
+        return card.cardID === parseInt(params.cardID);
     });
 
     if (card) {
-        const result = bids.filter((bid) => {
+        return bids.filter((bid) => {
             return bid.cardID === card.cardID;
-        });
+        })
 
-        res
-            .status(StatusCodes.OK)
-            .send(result);
     } else {
-        res
-            .status(StatusCodes.NOT_FOUND)
-            .send("No bids have been found for this card!");
+        return false
     }
 };
 

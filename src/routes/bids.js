@@ -1,5 +1,5 @@
 const express = require("express");
-const bidRouter = require('../controllers/bids')
+const bidController = require('../controllers/bids')
 
 const isLoggedIn = require("../middleware/is-logged-in");
 const isAdmin = require("../middleware/is-admin");
@@ -7,14 +7,27 @@ const {StatusCodes} = require("http-status-codes");
 
 const router = express.Router();
 
-router.get('/:cardID/bids', bidRouter.getBids);
+router.get('/:cardID/bids', (req, res) => {
+    let result = bidController.getBids(req.params)
 
-router.get('/:cardID/bids/:bidID', bidRouter.getBid);
+    if (result) {
+        res
+            .status(StatusCodes.OK)
+            .send(result);
+    } else {
+        res
+            .status(StatusCodes.NOT_FOUND)
+            .send("No bids have been found for this card!");
+    }
+});
 
-router.post('/:cardID/bids', isLoggedIn, bidRouter.postBid);
+
+router.get('/:cardID/bids/:bidID', bidController.getBid);
+
+router.post('/:cardID/bids', isLoggedIn, bidController.postBid);
 
 router.delete('/:cardID/bids/:bidID', isLoggedIn, isAdmin, (req, res) => {
-    let result = bidRouter.deleteBid(req.params);
+    let result = bidController.deleteBid(req.params);
 
     if (result) {
         res
