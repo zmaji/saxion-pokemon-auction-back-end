@@ -26,8 +26,6 @@ router.get('/:userID/bids', isLoggedIn, userController.getUserBids);
 router.post('',(req, res) => {
     let result = userController.saveUser(req.body, req.files);
 
-    console.log(result)
-
     if (result) {
         res
             .sendStatus(StatusCodes.CREATED);

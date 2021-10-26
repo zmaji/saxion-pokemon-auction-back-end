@@ -2,7 +2,6 @@ module.exports = [
     // Pokémon cards
     {
         cardID: 1,
-        userID: 1,
         name: 'Pikachu',
         startingAmount: 20,
         image: 'Pikachu.BS.58.webp',
@@ -15,7 +14,6 @@ module.exports = [
     },
     {
         cardID: 2,
-        userID: 3,
         name: 'Squirtle',
         startingAmount: 40,
         image: 'Squirtle.BS.63.webp',
@@ -28,7 +26,6 @@ module.exports = [
     },
     {
         cardID: 3,
-        userID: 1,
         name: 'Charmander',
         startingAmount: 35,
         image: 'Charmander.BS.46.webp',
@@ -41,7 +38,6 @@ module.exports = [
     },
     {
         cardID: 4,
-        userID: 2,
         name: 'Bulbasaur',
         startingAmount: 50,
         image: 'Bulbasaur.BS.44.webp',
@@ -54,7 +50,6 @@ module.exports = [
     },
     {
         cardID: 5,
-        userID: 2,
         name: 'Raichu',
         startingAmount: 50,
         image: 'Raichu.BS.14.webp',
@@ -67,7 +62,6 @@ module.exports = [
     },
     {
         cardID: 6,
-        userID: 2,
         name: 'Blastoise',
         startingAmount: 50,
         image: 'Blastoise.BS.2.webp',
@@ -80,7 +74,6 @@ module.exports = [
     },
     {
         cardID: 7,
-        userID: 2,
         name: 'Charizard',
         startingAmount: 50,
         image: 'Charizard.BS.4.webp',
@@ -93,7 +86,6 @@ module.exports = [
     },
     {
         cardID: 8,
-        userID: 2,
         name: 'Venusaur',
         startingAmount: 50,
         image: 'Venusaur.BS.15.webp',
