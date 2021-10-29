@@ -39,13 +39,14 @@ exports.getUserBids = (req, res) => {
     const result = cards.filter(card => card.userID === parseInt(req.params.userID));
     const userBids = bids.filter(bid => bid.userID === parseInt(req.params.userID));
 
+
     for (let card of result) {
         card.bids = userBids.filter(bid => bid.cardID === card.cardID);
     }
 
     res
         .status(StatusCodes.OK)
-        .send(result);
+        .send(userBids);
 };
 
 exports.saveUser = (body, files) => {

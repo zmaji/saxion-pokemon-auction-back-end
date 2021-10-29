@@ -6,7 +6,6 @@ const baseCard = {
     userID: null,
     name: null,
     startingAmount: null,
-    image: null,
     availabilityDate: null,
     cardType: null,
     rarity: null,
@@ -75,11 +74,10 @@ exports.saveCard = (body, files) => {
 
 exports.updateCard = (params, body, files) => {
     let result = cards.find(card => card.cardID === parseInt(params.cardID))
-
     if (result) {
         for (let key in body) {
             if (key !== "cardID" || key !== "bids") {
-                if (result.hasOwnProperty(key)) result[key] = body[key];
+                if (baseCard.hasOwnProperty(key)) result[key] = body[key];
             }
         }
 
@@ -89,12 +87,7 @@ exports.updateCard = (params, body, files) => {
             image.mv('./public/uploads/' + image.name);
 
             result.image = image.name;
-
-        } else {
-            return false;
         }
-
-
         return result;
     } else {
         return null;
