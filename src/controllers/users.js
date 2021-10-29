@@ -1,6 +1,4 @@
-const {StatusCodes} = require("http-status-codes");
 const users = require("../data/users");
-const cards = require("../data/pokemon-cards");
 const bids = require("../data/bids");
 const bcrypt = require("bcrypt");
 const {v4:uuidv4} = require('uuid');
@@ -19,34 +17,31 @@ const baseUser = {
     roles: []
 }
 
-exports.getUsers = (req, res) => {
-    res
-        .status(StatusCodes.OK)
-        .send(users);
+exports.getUsers = () => {
+    return users;
 };
 
-exports.getUser = (req, res) => {
-    const result = users.find((user) => {
-        return user.userID === parseInt(req.params.userID);
+exports.getUser = (params) => {
+    const user = users.find((user) => {
+        return user.userID === parseInt(params.userID);
     });
 
-    res
-        .status(StatusCodes.OK)
-        .send(result);
-};
-
-exports.getUserBids = (req, res) => {
-    const result = cards.filter(card => card.userID === parseInt(req.params.userID));
-    const userBids = bids.filter(bid => bid.userID === parseInt(req.params.userID));
-
-
-    for (let card of result) {
-        card.bids = userBids.filter(bid => bid.cardID === card.cardID);
+    if (user) {
+        return user;
     }
 
-    res
-        .status(StatusCodes.OK)
-        .send(userBids);
+    return false
+};
+
+exports.getUserBids = (params) => {
+    const user = users.find((user) => {
+        return user.userID === parseInt(params.userID);
+    });
+    if (user) {
+        return bids.filter(bid => bid.userID === parseInt(params.userID));
+    }
+
+    return false;
 };
 
 exports.saveUser = (body, files) => {
@@ -91,38 +86,3 @@ exports.saveUser = (body, files) => {
     }
 
 };
-
-
-
-
-//     let isValid = true;
-//
-//     for (let key in requiredUserFields) {
-//         if (isValid) {
-//             if (req.body.hasOwnProperty(requiredUserFields[key])) {
-//                 isValid = req.body[requiredUserFields[key]].length > 0;
-//             } else {
-//                 isValid = false;
-//             }
-//         } else {
-//             break;
-//         }
-//     }
-//
-//     if (isValid) {
-//         let newUserId = users[users.length - 1].userID + 1;
-//         let body = JSON.parse(JSON.stringify({
-//             userID: newUserId,
-//             firstName: req.body.firstName,
-//             lastName: req.body.lastName,
-//             avatar: req.body.avatar,
-//             email: req.body.email,
-//             password: req.body.password,
-//             city: req.body.city,
-//             address: req.body.address,
-//             zipcode: req.body.zipcode,
-//         }))
-//         users.push(body);
-//         return body;
-//     }
-// };

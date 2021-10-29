@@ -8,20 +8,41 @@ const {StatusCodes} = require("http-status-codes");
 
 const router = express.Router();
 
-router.get('', isLoggedIn, isAdmin, userController.getUsers);
+router.get('', isLoggedIn, isAdmin, (req, res) => {
+    let result = userController.getUsers();
 
-router.get('/:userID', isLoggedIn, isAdmin, userController.getUser);
+    res
+        .status(StatusCodes.OK)
+        .send(result);
+});
 
-// router.get('/:userID/cards', (req, res) => {
-//     const result = cards.filter(card => card.userID === parseInt(req.params.userID));
-//
-//     res
-//         .status(StatusCodes.OK)
-//         .send(result);
-// });
+router.get('/:userID', isLoggedIn, isAdmin, (req, res) => {
+    let result = userController.getUser(req.params);
 
+    if (result) {
+        res
+            .status(StatusCodes.OK)
+            .send(result);
+    } else {
+        res
+            .status(StatusCodes.NOT_FOUND)
+            .send("Unable to find user");
+    }
+});
 
-router.get('/:userID/bids', isLoggedIn, userController.getUserBids);
+router.get('/:userID/bids', isLoggedIn, (req, res) => {
+    let result = userController.getUserBids(req.params);
+
+    if (result) {
+        res
+            .status(StatusCodes.OK)
+            .send(result);
+    } else {
+        res
+            .status(StatusCodes.NOT_FOUND)
+            .send("Unable to find user");
+    }
+});
 
 router.post('',(req, res) => {
     let result = userController.saveUser(req.body, req.files);
