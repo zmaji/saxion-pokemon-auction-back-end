@@ -22,7 +22,11 @@ exports.getCards = (req) => {
         let isValid = true;
         for (let key in filters) {
             if (card[key] && filters[key]) {
-                isValid = isValid && card[key].toLowerCase() === filters[key].toLowerCase();
+                if (key !== "name") {
+                    isValid = isValid && card[key].toLowerCase() === filters[key].toLowerCase();
+                } else {
+                    isValid = isValid && card[key].toLowerCase().match(filters[key].toLowerCase());
+                }
             }
         }
         return isValid;
